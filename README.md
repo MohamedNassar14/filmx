@@ -12,4 +12,4 @@ Angular, Angular Material, Boostrap, Context API
 ## Contributing
 Contributions are welcome! If you have any suggestions, bug reports, or feature requests, please open an issue or submit a pull request.
 ## Live Preview
-https://movies-noxe-app.vercel.app
+https://filmx-movies.vercel.app
