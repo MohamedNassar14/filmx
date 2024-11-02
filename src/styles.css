@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates&family=Roboto&display=swap');
+
+:root
+{
+    --main-bg: #131722;
+    --bg-light: #24baef; 
+    --main-font: 'Montserrat Alternates', sans-serif;
+    --text-color: #fff;
+    --border-color : #a8a8a83d;
+    --bg-gray : #151c2e;
+}
+body
+{
+    background-color: var(--main-bg);
+    font-family: var(--main-font);
+    color: var(--text-color);
+    overflow-x: hidden;
+}
+a,a:hover
+{
+    color: var(--text-color);
+    text-decoration: none;
+}
+ul
+{
+    list-style-type: none;
+}
+.line
+{
+    height: 1px;
+    background-color: var(--border-color);
+}
+.vote
+{
+    background-color: var(--bg-light);
+    border-top-right-radius: .5rem;
+}
+.bg-gray
+{
+    background-color: var(--bg-gray);
+}
+.input-mine
+{
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+.text-mute
+{
+    color:#6c757d;
+}
+.page-link
+{
+    background-color: transparent;
+    color: #fff;
+    cursor: pointer;
+}
+.page-link:hover
+{
+    background-color: #fff;
+    color: var(--main-bg);
+}
+.sidebar
+{
+    position: fixed;
+    top: 0;
+    right: -15rem;
+    width: 15rem;
+    height: 100vh;
+    z-index: 999;
+    background-color: var(--main-bg);
+    transition: all .5s ease-in-out;
+}
+.open-menu
+{
+    display: none;
+    cursor: pointer;
+}
+.close-menu
+{
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+}
+.close-menu:hover
+{
+    transform: rotate(180deg)
+}
+@media screen and (max-width: 992px)
+{
+    .open-menu
+    {
+        display: block;
+    }
+    .nav-hide
+    {
+        display: none;
+    }
+    
+}
+@media screen and (max-width: 600px)
+{
+    .container
+    {
+        --bs-gutter-x: 1.75rem !important;
+    } 
+    .social-accounts
+    {
+        display: flex;
+        justify-content: center;
+    }
+    .social-media
+    {
+        margin-bottom: .25rem !important;
+    }
+    .search
+    {
+        margin-left: 1.5rem !important;
+    }
+}
