@@ -7,8 +7,8 @@
    <div class="container">
         <div class="row py-4" > 
             <div class="col-md-3">
-                <img *ngIf="mediaDetails.poster_path" [src]="imgPrefix+mediaDetails.poster_path" class="w-100 rounded-3 mb-2"/>
-                <img *ngIf="mediaDetails.profile_path" [src]="imgPrefix+mediaDetails.profile_path" class="w-100 rounded-3 mb-2"/>
+                <img *ngIf="mediaDetails.poster_path" [src]="imgPrefix+mediaDetails.poster_path" class="w-100 rounded-3 mb-2" alt="media-image"/>
+                <img *ngIf="mediaDetails.profile_path" [src]="imgPrefix+mediaDetails.profile_path" class="w-100 rounded-3 mb-2" alt="media-image"/>
             </div>
             <div class="col-md-9">
                 <h3 class="py-2 mb-3"> {{mediaDetails.name}} {{mediaDetails.title}} </h3>
@@ -26,12 +26,26 @@
         
         <div class="row py-4 gy-3" >
             <h4 class="py-4 text-center" *ngIf="mediaSimilar.length"> Similar to it : </h4>
-            <div class="col-lg-2 col-md-3 col-sm-6 col-6" *ngFor="let similar of mediaSimilar">
-                <div (click)="getSimilar(media_type, similar.id)" class="item position-relative">
-                      <img *ngIf="similar.poster_path" [src]="imgPrefix+similar.poster_path" class="w-100 rounded-3"/>
-                      <img *ngIf="similar.profile_path" [src]="imgPrefix+similar.profile_path" class="w-100 rounded-3"/>
+            <div class="col-lg-2 col-md-3 col-sm-6 col-6 cursor" *ngFor="let similar of mediaSimilar">
+                <div (click)="getSimilar(media_type, similar.id)" class="item position-relative overflow-hidden">
+                      <img *ngIf="similar.poster_path" [src]="imgPrefix+similar.poster_path" class="w-100 rounded-3" alt="media-image"/>
+                      <img *ngIf="similar.profile_path" [src]="imgPrefix+similar.profile_path" class="w-100 rounded-3" alt="media-image"/>
                       <h3 class="h5 my-2">{{similar.title}} {{similar.name}}</h3>
-                      <p *ngIf="similar.vote_average" class="vote position-absolute top-0 end-0 p-2 text-white">{{similar.vote_average.toFixed(1)}}</p>  
+                      <div *ngIf="similar.vote_average" class="rating-circle position-absolute top-0 start-0 m-1">
+                        <svg width="40" height="40" viewBox="0 0 100 100" class="bg-gray rounded-5">
+                          <circle cx="50" cy="50" r="45" fill="none" stroke="#fff" stroke-width="5"></circle>
+                          <circle cx="50" cy="50" r="45" fill="none" 
+                              stroke="#ff9800" 
+                              stroke-width="5" 
+                              stroke-dasharray="282.743" 
+                              [attr.stroke-dashoffset]="282.743 - (getVotePercentage(similar.vote_average) / 100) * 282.743">
+                          </circle>
+                        </svg>
+                        <p class="percentage text-white fw-bold position-absolute top-50 start-50 translate-middle">{{ getVotePercentage(similar.vote_average) }}%</p>
+                      </div>
+                      <div class="see-more rounded-3">
+                        <i class="fa-solid fa-eye fs-3"></i>
+                      </div>
                </div>
             </div>
         </div>

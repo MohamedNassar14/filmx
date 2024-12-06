@@ -70,5 +70,9 @@ export class MediaDetailsComponent implements OnInit {
       }
     })
   }
+  getVotePercentage(voteAverage: number): number 
+  {
+    return Math.round((voteAverage / 10) * 100);
+  }
  
 }

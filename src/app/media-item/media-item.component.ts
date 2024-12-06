@@ -15,9 +15,11 @@ export class MediaItemComponent implements OnInit {
 
   @Input() item!:Media;
   imgPrefix:string = "https://image.tmdb.org/t/p/w500/";
-  ngOnInit(): void {
+  ngOnInit(): void {}
 
-
+  getVotePercentage(voteAverage: number): number 
+  {
+    return Math.round((voteAverage / 10) * 100);
   }
 
 }
