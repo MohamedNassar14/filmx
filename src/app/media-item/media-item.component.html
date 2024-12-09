@@ -1,7 +1,12 @@
 <div class="item position-relative overflow-hidden">
         <a [routerLink]="['/mediaDetails', item.id, item.media_type]">
-          <img *ngIf="item.poster_path" [src]="imgPrefix+item.poster_path" class="w-100 rounded-3" alt="media-image"/>
-          <img *ngIf="item.profile_path" [src]="imgPrefix+item.profile_path" class="w-100 rounded-3" alt="media-image"/>
+          <div class="photo position-relative">
+             <img *ngIf="item.poster_path" [src]="imgPrefix+item.poster_path" class="w-100 rounded-3" alt="media-image"/>
+             <img *ngIf="item.profile_path" [src]="imgPrefix+item.profile_path" class="w-100 rounded-3" alt="media-image"/>
+             <div class="see-more position-absolute d-flex justify-content-center align-items-center rounded-3">
+              <i class="fa-solid fa-eye fs-3"></i>
+            </div>
+          </div>
           <h3 class="h5 mb-4 mt-2">{{item.title}} {{item.name}}</h3>
           <div *ngIf="item.vote_average" class="rating-circle position-absolute top-0 start-0 m-1">
             <svg width="40" height="40" viewBox="0 0 100 100" class="bg-gray rounded-5">
@@ -14,9 +19,6 @@
               </circle>
             </svg>
             <p class="percentage text-white fw-bold position-absolute top-50 start-50 translate-middle">{{ getVotePercentage(item.vote_average) }}%</p>
-          </div>
-          <div class="see-more rounded-3">
-            <i class="fa-solid fa-eye fs-3"></i>
           </div>
         </a>
 </div> 

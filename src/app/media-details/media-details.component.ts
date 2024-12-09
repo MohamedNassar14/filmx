@@ -46,7 +46,7 @@ export class MediaDetailsComponent implements OnInit {
       next:(data)=> 
       {
         this.spinner = true;
-        this.mediaSimilar = data.results.filter((similar:Media)=> similar.poster_path !== null && similar.poster_path !== null).slice(0, 12);
+        this.mediaSimilar = data.results.filter((similar:Media)=> similar.poster_path !== null && similar.profile_path !== null).slice(0, 12);
       }
     })
   }

@@ -28,8 +28,13 @@
             <h4 class="py-4 text-center" *ngIf="mediaSimilar.length"> Similar to it : </h4>
             <div class="col-lg-2 col-md-3 col-sm-6 col-6 cursor" *ngFor="let similar of mediaSimilar">
                 <div (click)="getSimilar(media_type, similar.id)" class="item position-relative overflow-hidden">
-                      <img *ngIf="similar.poster_path" [src]="imgPrefix+similar.poster_path" class="w-100 rounded-3" alt="media-image"/>
-                      <img *ngIf="similar.profile_path" [src]="imgPrefix+similar.profile_path" class="w-100 rounded-3" alt="media-image"/>
+                      <div class="photo position-relative">
+                         <img *ngIf="similar.poster_path" [src]="imgPrefix+similar.poster_path" class="w-100 rounded-3" alt="media-image"/>
+                         <img *ngIf="similar.profile_path" [src]="imgPrefix+similar.profile_path" class="w-100 rounded-3" alt="media-image"/>
+                         <div class="see-more position-absolute d-flex justify-content-center align-items-center rounded-3">
+                            <i class="fa-solid fa-eye fs-3"></i>
+                          </div>
+                      </div>
                       <h3 class="h5 my-2">{{similar.title}} {{similar.name}}</h3>
                       <div *ngIf="similar.vote_average" class="rating-circle position-absolute top-0 start-0 m-1">
                         <svg width="40" height="40" viewBox="0 0 100 100" class="bg-gray rounded-5">
@@ -42,9 +47,6 @@
                           </circle>
                         </svg>
                         <p class="percentage text-white fw-bold position-absolute top-50 start-50 translate-middle">{{ getVotePercentage(similar.vote_average) }}%</p>
-                      </div>
-                      <div class="see-more rounded-3">
-                        <i class="fa-solid fa-eye fs-3"></i>
                       </div>
                </div>
             </div>
